@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="UB7ZG1" name="TestWaveEdit" projectType="guiapp" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
+  <MAINGROUP id="h2q9WP" name="TestWaveEdit">
+    <GROUP id="{90A04A5F-A3E1-D2F6-E641-87DBDCCC1BFD}" name="Source">
+      <FILE id="QQTq7v" name="CommandIDs.h" compile="0" resource="0" file="Source/CommandIDs.h"/>
+      <FILE id="tKzl9L" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="DEXZbn" name="MainPane.cpp" compile="1" resource="0" file="Source/MainPane.cpp"/>
+      <FILE id="PZ9IM7" name="MainPane.h" compile="0" resource="0" file="Source/MainPane.h"/>
+      <FILE id="UYbpGL" name="WaveCutList.cpp" compile="1" resource="0" file="Source/WaveCutList.cpp"/>
+      <FILE id="Le6QN4" name="WaveCutList.h" compile="0" resource="0" file="Source/WaveCutList.h"/>
+      <FILE id="YN1yqn" name="WaveCutListDocument.cpp" compile="1" resource="0"
+            file="Source/WaveCutListDocument.cpp"/>
+      <FILE id="gwGsfa" name="WaveCutListDocument.h" compile="0" resource="0"
+            file="Source/WaveCutListDocument.h"/>
+      <FILE id="xvUuhV" name="WaveCutListPlayer.cpp" compile="1" resource="0"
+            file="Source/WaveCutListPlayer.cpp"/>
+      <FILE id="o2pOTt" name="WaveCutListPlayer.h" compile="0" resource="0"
+            file="Source/WaveCutListPlayer.h"/>
+      <FILE id="sHlJ7R" name="WaveCutListView.cpp" compile="1" resource="0"
+            file="Source/WaveCutListView.cpp"/>
+      <FILE id="ORpkU7" name="WaveCutListView.h" compile="0" resource="0"
+            file="Source/WaveCutListView.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_ASIO="1"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="TestWaveEdit" headerPath="D:\SDKs\ASIOSDK2.3.1\common"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="TestWaveEdit" headerPath="D:\SDKs\ASIOSDK2.3.1\common"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_devices" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../SDKs/JUCE-7.0.7/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+</JUCERPROJECT>
