@@ -1,6 +1,8 @@
 # TestWaveEdit
- 
 
+https://github.com/yu2924/TestWaveEdit/assets/88780921/86c74db8-55c9-49bc-9c4c-bd3cc727a05c
+
+https://github.com/yu2924/TestWaveEdit/assets/88780921/c0e96ea4-8b73-4ddf-8447-ef4ef3682a8c
 
 ## What is this?
 
