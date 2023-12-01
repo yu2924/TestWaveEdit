@@ -22,6 +22,7 @@ enum CommandIDs
 	EditErase,
 	EditFadein,
 	EditFadeout,
+	EditMute,
 	TransportRun,
 	TransportLoop,
 	TransportHome,

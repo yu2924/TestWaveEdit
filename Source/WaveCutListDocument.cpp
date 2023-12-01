@@ -252,6 +252,10 @@ public:
 	{
 		return hasValidContent() && !r.isEmpty() && r.intersects({ 0, totalLength });
 	}
+	virtual bool canMute(const Range64& r) const override
+	{
+		return hasValidContent() && !r.isEmpty() && r.intersects({ 0, totalLength });
+	}
 	// --------------------------------------------------------------------------------
 	virtual bool undo() override
 	{
@@ -351,6 +355,20 @@ public:
 		listenrList.call(&Listener::waveCutListDocumentDidEdit, this, EditReplace, r);
 		changed();
 		DBG("[WaveCutListDocument] edit-fadeout: cutlistsize=" << (int)waveCutList.size() << " totallength=" << totalLength);
+		return false;
+	}
+	virtual bool mute(const Range64& r) override
+	{
+		if(!canFadeout(r)) return false;
+		switchToTempBasedCutList();
+		WaveCutList clramp = WaveCutListModifier::processSyncWithRamp(waveCutList, r, 0, 0);
+		ScopedUndoTransaction sut(undoManager, "mute");
+		if(!undoManager.perform(new WaveEraseUndoAction(waveCutList, r))) return false;
+		if(!undoManager.perform(new WaveInsertUndoAction(waveCutList, clramp, r.begin))) return false;
+		jassert(totalLength == waveCutList.calcTotalSize());
+		listenrList.call(&Listener::waveCutListDocumentDidEdit, this, EditReplace, r);
+		changed();
+		DBG("[WaveCutListDocument] edit-mute: cutlistsize=" << (int)waveCutList.size() << " totallength=" << totalLength);
 		return false;
 	}
 };

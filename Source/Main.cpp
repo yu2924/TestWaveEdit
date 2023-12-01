@@ -104,6 +104,11 @@ static const char SvgEditFadeout[] =
 	R"(<svg xmlns="http://www.w3.org/2000/svg">)"
 	R"(<path d="m0.52917 0.52917 6.8792 6.8792h-6.8792" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".52917"/>)"
 	R"(</svg>)";
+static const char SvgEditMute[] =
+	R"(<svg width="30" height="30" version="1.1" viewBox="0 0 7.9375 7.9375" xmlns="http://www.w3.org/2000/svg">)"
+	R"(<path d="m0.52917 0.52917h1.3229v6.8792h4.2333v-6.8792h1.3229" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".52917"/>)"
+	R"(</svg>)";
+
 
 class MainToolbarItemFactory : public juce::ToolbarItemFactory
 {
@@ -134,6 +139,7 @@ public:
 			CommandIDs::EditPaste,
 			CommandIDs::EditFadein,
 			CommandIDs::EditFadeout,
+			CommandIDs::EditMute,
 		};
 	}
 	virtual void getDefaultItemSet(juce::Array<int> &ids) override
@@ -153,6 +159,7 @@ public:
 			juce::ToolbarItemFactory::spacerId,
 			CommandIDs::EditFadein,
 			CommandIDs::EditFadeout,
+			CommandIDs::EditMute,
 		};
 	}
 	virtual juce::ToolbarItemComponent* createItem(int itemId) override
@@ -168,6 +175,7 @@ public:
 			{ CommandIDs::EditPaste		, "paste"	, SvgEditPaste		, nullptr			},
 			{ CommandIDs::EditFadein	, "fadein"	, SvgEditFadein		, nullptr			},
 			{ CommandIDs::EditFadeout	, "fadeout"	, SvgEditFadeout	, nullptr			},
+			{ CommandIDs::EditMute		, "mute"	, SvgEditMute		, nullptr			},
 		};
 		for(int c = juce::numElementsInArray(Table), i = 0; i < c; ++i)
 		{
@@ -282,6 +290,7 @@ public:
 				menu.addSeparator();
 				menu.addCommandItem(&applicationCommandManager, CommandIDs::EditFadein);
 				menu.addCommandItem(&applicationCommandManager, CommandIDs::EditFadeout);
+				menu.addCommandItem(&applicationCommandManager, CommandIDs::EditMute);
 				break;
 			case 2:
 				menu.addCommandItem(&applicationCommandManager, CommandIDs::TransportRun);
@@ -316,6 +325,7 @@ public:
 			CommandIDs::EditErase,
 			CommandIDs::EditFadein,
 			CommandIDs::EditFadeout,
+			CommandIDs::EditMute,
 			CommandIDs::TransportRun,
 			CommandIDs::TransportLoop,
 			CommandIDs::TransportHome,
@@ -384,6 +394,10 @@ public:
 			case CommandIDs::EditFadeout:
 				info.setInfo("Fadeout", "fadeout", "edit", 0);
 				info.setActive(document.canFadeout(contentPane->mainPane.getSelectionRange64()));
+				break;
+			case CommandIDs::EditMute:
+				info.setInfo("Mute", "mute", "edit", 0);
+				info.setActive(document.canMute(contentPane->mainPane.getSelectionRange64()));
 				break;
 			case CommandIDs::TransportRun:
 				info.setInfo("Run/Stop", "run/stop", "transport", 0);
@@ -454,6 +468,9 @@ public:
 				return true;
 			case CommandIDs::EditFadeout:
 				document.fadeout(contentPane->mainPane.getSelectionRange64());
+				return true;
+			case CommandIDs::EditMute:
+				document.mute(contentPane->mainPane.getSelectionRange64());
 				return true;
 			case CommandIDs::TransportRun:
 				player.setRunning(!player.isRunning());

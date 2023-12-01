@@ -43,6 +43,7 @@ public:
 	virtual bool canPaste(int64_t t) const = 0;
 	virtual bool canFadein(const Range64& r) const = 0;
 	virtual bool canFadeout(const Range64& r) const = 0;
+	virtual bool canMute(const Range64& r) const = 0;
 	virtual bool undo() = 0;
 	virtual bool redo() = 0;
 	virtual bool erase(const Range64& r) = 0;
@@ -51,5 +52,6 @@ public:
 	virtual bool paste(int64_t t) = 0;
 	virtual bool fadein(const Range64& r) = 0;
 	virtual bool fadeout(const Range64& r) = 0;
+	virtual bool mute(const Range64& r) = 0;
 	static WaveCutListDocument* createInstance(juce::AudioFormatManager& afm);
 };
