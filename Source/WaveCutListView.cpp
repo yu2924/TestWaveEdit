@@ -286,6 +286,7 @@ public:
 	}
 	void setZoomFactor(double zfact, double tanchor, bool anchorcentric)
 	{
+		int xanchorprev = t2x(tanchor);
 		// NOTE:
 		// the maximum width of a component that can be correctly rendered seems to be:
 		// * 0x02000000 on Win32
@@ -296,11 +297,10 @@ public:
 		resizeAccordingToZoomFactor();
 		if(anchorcentric)
 		{
-			int xanchor = t2x(tanchor);
-			int xcur = getMouseXYRelative().x;
+			int xanchornew = t2x(tanchor);
 			WaveCutListView* parentvp = getParentView();
 			juce::Point<int> scrpos = parentvp->getViewPosition();
-			parentvp->setViewPosition(scrpos.x - xcur + xanchor, scrpos.y);
+			parentvp->setViewPosition(scrpos.x + xanchornew - xanchorprev, scrpos.y);
 		}
 	}
 };
