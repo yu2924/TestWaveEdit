@@ -286,21 +286,19 @@ public:
 	}
 	void setZoomFactor(double zfact, double tanchor, bool anchorcentric)
 	{
-		int xanchorprev = t2x(tanchor);
 		// NOTE:
 		// the maximum width of a component that can be correctly rendered seems to be:
 		// * 0x02000000 on Win32
 		// * 0x01000000 on macOS
+		int xanchor = t2x(tanchor) + getX();
 		constexpr int MAXCOORDS = 0x01000000;
 		double maxzoom = (double)MAXCOORDS / (double)getWidth();
 		zoomFactor = std::max(1.0, std::min(maxzoom, zfact));
 		resizeAccordingToZoomFactor();
 		if(anchorcentric)
 		{
-			int xanchornew = t2x(tanchor);
-			WaveCutListView* parentvp = getParentView();
-			juce::Point<int> scrpos = parentvp->getViewPosition();
-			parentvp->setViewPosition(scrpos.x + xanchornew - xanchorprev, scrpos.y);
+			int xoff = t2x(tanchor) - xanchor;
+			getParentView()->setViewPosition(xoff, -getY());
 		}
 	}
 };
